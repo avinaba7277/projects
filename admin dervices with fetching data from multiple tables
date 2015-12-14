@@ -1,0 +1,64 @@
+<div class="portlet-body table-responsive">
+							<table class="table table-striped table-bordered table-hover table-responsive" id="sample_5">
+							<thead>
+							<tr>
+								<th>Sl NO</th>
+								<th>Listing</th>
+                                                                <th>Service Title</th>
+                                                                <th>Category</th>
+                                                                <th>Description</th>
+                                                                <th>Rate</th>
+                                                                <th>Unit Type</th>
+                                                                <th>Max Hire</th>
+                                                                <th>Min Hire</th>
+                                                                <th>Deposit</th>
+                                                                <th>Extra Services</th>
+                                                                <th>Bond</th>
+                                                                <th>Details</th>
+                                                                
+                                                        </tr>
+							</thead>
+							<tbody>
+                                                            <?php 
+                                                            $i=1;
+                                                            $application_query=  mysql_query("select * from service ");
+                                                            while($fetch_application=  mysql_fetch_array($application_query))
+                                                            {
+                                                               $listing=  mysql_fetch_array(mysql_query("select * from service_listing where listing_id='$fetch_application[service_listing]'"));
+                                                               $category= mysql_fetch_array(mysql_query("select * from category where id='$fetch_application[service_category]'")) ;
+                                                            ?>
+							<tr>
+                                                            <td><?=$i?></td>
+                                                        <td><?=$listing['listing_name']?></td>
+                                                        <td><?=$fetch_application['service_title']?></td>
+                                                        <td><?=$category['cat_name']?></td>
+                                                        <td><?=$fetch_application['description']?></td>
+                                                        <td><?=$fetch_application['rate']?></td>
+                                                        <td><?=$fetch_application['unit_type']?></td>
+                                                        <td><?=$fetch_application['max_hire']?></td>
+                                                        <td><?=$fetch_application['min_hire']?></td>
+                                                        <td><?=$fetch_application['deposit']?></td>
+                                                        <td><?=$fetch_application['extra_service']?></td>
+                                                        <td><?=$fetch_application['bond']?></td>
+                                                        <td><a class="btn btn-primary" href="#">View</a></td>
+                                                        
+                                                        
+                                                       
+                                                        
+							</tr>
+                                                     
+                                                            <?php
+                                                            
+                                                               $i++;
+                                                            }?>
+							
+							
+						
+							
+							
+							
+							
+							
+							</tbody>
+							</table>
+						</div>
